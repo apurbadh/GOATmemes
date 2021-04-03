@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9b95c05968.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/gossets/css/style.css">
+    <title>GOATmemes - Developers</title>
+    <style>
+        .about{
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            color: var(--second-color);
+            box-sizing: border-box;
+            padding-top: 4rem;
+            padding-bottom: 3rem;
+        }
+        .section .section-title{
+            --first-color: #fecd09;
+            --second-color: #0E2431;
+            font-family: var(--body-font);
+            box-sizing: border-box;
+            margin: 0;
+            position: relative;
+            font-size: var(--h2-font-size);
+            color: var(--first-color);
+            margin-top: var(--mb-2);
+            text-align: center;
+            margin-bottom: var(--mb-6);
+        }
+        .section .about__container{
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            color: var(--second-color);
+            box-sizing: border-box;
+            max-width: 1024px;
+            display: grid;
+            grid-column-gap: 2rem;
+            width: calc(100% - 2rem);
+            row-gap: 2rem;
+            grid-template-columns: repeat(2,1fr);
+            align-items: center;
+            text-align: initial;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .section .about__container .about__img img{
+            height: 450px;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <section class="about section " id="about">
+        <h1 class="section-title" style="font-size: 40px;">Developers</h1>
+        <br><br><br><br>
+        <div class="about__container bd-grid">
+            <div class="about__img" data-sr-id="9">
+                <img src="/static/images/amir.jpg" alt="" style="height: auto; width: 350px;">
+            </div>
+            
+            <div>
+                <h2 class="about__subtitle" style="font-size: 31px; color: #fecd09;">Amir Shapkota.</h2><br>
+                <p class="about__text" style="font-size: 14px;">Experienced Web Developer, front-end and back-end. Experience in JavaScript, React, PHP, Python, Django. Knowledge in Ethical Hacking, Cyber Security.<br><br>
+            </div>                                   
+        </div>
+    </section>
+    <section class="about section " id="about">
+        <br><br><br><br>
+        <div class="about__container bd-grid">
+            <div class="about__img" data-sr-id="9">
+                <img src="/static/images/apurba.jpg" alt="" style="height: auto; width: 350px;">
+            </div>
+            
+            <div>
+                <h2 class="about__subtitle" style="font-size: 31px; color: #fecd09;">Apurba Adhikari.</h2><br>
+                <p class="about__text" style="font-size: 14px;">Experienced Web and Machine Learning developer. Experience with Tensorflow, scikitlearn, Django, Flask, React and NodeJS. Experience with Blockchain, Ethical Hacking and Cyber Security.<br><br>
+            </div>                                   
+        </div>
+    </section>
+    
+</body>
+</html>

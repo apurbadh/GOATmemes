@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>GOATmemes - Your Daily Dose of memes</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://kit.fontawesome.com/9b95c05968.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/gossets/css/style.css">
+    <link rel="icon" href="/static/images/gm.png">
+
+    <script>
+        function signup(){
+            window.open('signup', '_self');
+        };
+        function login(){
+            window.open('login', '_self');
+        };
+    </script>
+
+
+
+</head>
+<body>
+    <!-- main page -->
+    
+    <section class="main-page">
+        <!-- left -->
+        <div class="left">
+            <div class="left-content">  <!--wrapper of the content-->
+                
+                <img src="/static/images/logo.png">
+                
+            </div>
+        </div>
+        <!-- end of left -->
+
+        <!-- right -->
+        <div class="right">
+            
+                <form class="right-content-form">
+                    <input type="text" class="user-info" placeholder="Email">
+                    <div><!--group of input and label-->
+                    <input type="password" class="password" placeholder="Password">
+                    <a href="forgot"><label style="cursor: pointer;">Forgot Password?</label></a>
+                    </div>
+                    <button type="button" class="btn-top">Log in</button>
+                </form>
+                <div class="middle-content">
+                    <i class="fas"><img src="/static/images/gm.png"></i>
+                    <h1>GOATmemes</h1>
+                    <h4>Your Daily Dose of memes</h4>
+                    <button type="button" class="sign-up main-btn" onclick="signup()">Sign Up</button>
+                    <button type="button" class="log-in main-btn" onclick="login()">Log In</button>
+                </div>
+            
+        </div>
+        <!--end of right -->
+
+        <!-- footer -->
+        <footer class="main-page-footer">
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Developers</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">&copy; 2021 GOATmemes</a></li>
+                
+                
+            </ul>
+        </footer>
+        <!-- end of footer -->
+    </section>
+    <!--end of main page -->
+    
+</body>
+<script src="/static/gossets/js/script.js"></script>   
+</html>

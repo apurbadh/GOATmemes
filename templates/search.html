@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>GOATmemes - My memes</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://kit.fontawesome.com/9b95c05968.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/gossets/css/style.css">
+    <link rel="icon" href="/static/images/gm.png">
+     
+    </script>
+</head>
+<body>
+       <!-- feeds page -->
+       <section class="feeds-page">
+        <!-- feeds-nav -->
+        <nav class="feeds-nav dark-mode-1">
+            <div class="icons">
+                <a href="dashboard" class="active"><i class="fas fa-home"></i></a>
+                <a href="#"><i class="far fa-bell"></i></a>
+            </div>
+
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search" class="search-bar-input dark-mode-2 light-text border">
+            </div>
+            
+            <div class="user">
+                <div class="user-img-wrapper">
+                    <img src="/static/images/user1.jpg" alt="user1">
+                </div>
+                <a href="#" class="user-link light-text">Name USER</a>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </nav>
+        <!-- end of feeds-nav -->
+
+
+        <!-- feeds content -->
+        <div class="feeds-content dark-mode-2">
+
+        <div class="feeds-header dark-mode-1">
+            <div class="header-top light-text border">
+                <h4>Search Results for "memes"</h4>
+            </div>
+
+        </div> <!--feeds header end-->
+<!-- -------------------------------------- -->
+        <div class="posts dark-mode-1"><!-- possts -->
+            <div class="post border">
+                <div class="user-avatar"> <!--img wrapper-->
+                    <img src="/static/images/user1.jpg">
+                </div>
+                <div class="post-content">
+                    <div class="post-user-info light-text"><!-- 4 parts fullname,icon,span username,time -->
+                    <h4>Name USER</h4>
+                    <span>@username</span>
+                    </div>
+                    <!-- text content -->
+                    <p class="post-text light-text">
+                        meme here
+                    </p>
+                    <div class="post-img">
+                        <img src="/static/images/post-img-1.jpg" alt="">
+                    </div>
+                    <div class="post-icons" style="text-align: center;">
+                        <i class="far fa-laugh-squint" style="font-size: 20px;"> 43</i>
+                    </div>
+                </div>
+            </div>
+            <!-- post 2 -->
+            <div class="post border">
+                <div class="user-avatar"> <!--img wrapper-->
+                    <img src="/static/images/user1.jpg">
+                </div>
+                <div class="post-content">
+                    <div class="post-user-info light-text"><!-- 4 parts fullname,icon,span username,time -->
+                    <h4>Name USER</h4>
+                    <span>@username</span>
+                    </div>
+                    <!-- text content -->
+                    <p class="post-text light-text">
+                        boom meme
+                    </p>
+                    <div class="post-img">
+                        <img src="/static/images/post-img-2.jpg" alt="">
+                    </div>
+                    <div class="post-icons" style="text-align: center;">
+                        <i class="far fa-laugh-squint" style="font-size: 20px;"> 43</i>
+                    </div>
+                </div>
+            </div>
+           
+            
+            
+            
+        </div>
+
+        <div class="follow dark-mode-1"><!-- who to follow section -->
+            <!-- parts: heading,3users,show more,footer -->
+            <h3 class="follow-heading light-text border">TOP MEME POSTERS</h3>
+            <div class="follow-user border">
+                <div class="follow-user-img">
+                    <img src="/static/images/user3.jpg" alt="">
+                </div>
+                <div class="follow-user-info light-text">
+                    <h4>Kale Kumar</h4>
+                    <p>@kalekumar123</p>
+                </div>
+                <button type="button" class="follow-btn dark-mode-2">Memes</button>
+            </div>
+
+            <!-- user 2 -->
+            <div class="follow-user border">
+                <div class="follow-user-img">
+                    <img src="/static/images/user6.jpg" alt="">
+                </div>
+                <div class="follow-user-info light-text">
+                    <h4>HeHe Ram</h4>
+                    <p>@heheram123</p>
+                </div>
+                <button type="button" class="follow-btn dark-mode-2">Memes</button>
+            </div>
+            <!-- user 3 -->
+
+            <div class="follow-user border">
+                <div class="follow-user-img">
+                    <img src="/static/images/user5.jpg" alt="">
+                </div>
+                <div class="follow-user-info light-text">
+                    <h4>Don Dai</h4>
+                    <p>@daiisdon</p>
+                </div>
+                <button type="button" class="follow-btn dark-mode-2">Memes</button>
+            </div><!-- user finished here -->
+
+
+
+            <footer class="follow-footer dark-mode-2">
+                <ul>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Developers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </footer>
+
+        </div> <!--follow///-->
+        </div> <!--feeds-content end-->
+        <!-- end of feeds content -->
+        <button type="button" class="post-btn">
+            <i class="fas fa-laugh"></i>Post  <!--this button ends up behind the navigation button so set css position as fixed and defile bottom and left-->
+        </button>
+
+        <!-- post modal -->
+        <div class="modal-wrapper">
+            <div class="modal dark-mode-1">
+                <div class="modal-header border">
+                    <i class="fas fa-times"></i>
+                    <button type="button" class="">Post</button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-img">
+                        <img src="/static/images/user1.jpg" width="40" alt="">
+                    </div>
+                    <input type="text" placeholder="Have any memes?" class="modal-input dark-mode-2 light-text border">
+                    
+                </div>
+
+                <div class="modal-footer">
+                    <div class="modal-icons">
+                        <i class="far fa-image"></i>
+                        <i class="fas fa-camera"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- end of post modal -->
+
+        <!-- sidebar -->
+        <div class="sidebar-wrapper">
+            <div class="sidebar dark-mode-1">
+                <div class="sidebar-header border">
+                    <h2 class="light-text">GOAT Info</h2>
+                    <i class="fas fa-times"></i>
+                </div> 
+                <div class="sidebar-user">
+                    <div class="sidebar-user-img">
+                        <img src="/static/images/user1.jpg"  alt="">
+                    </div>
+                </div>
+                <div class="sidebar-user-info light-text">
+                    <h4>Name USER</h4>
+                    <p>@username</p>
+                </div>
+
+                <div class="following light-text">
+                    <p class="following-paragraph">
+                        <span>18</span><br> Memes Shared
+                    </p>
+                    <p class="following-paragraph">
+                        <span>10</span><br> Active Days
+                    </p>
+                </div>
+                <br><br>
+
+                <div class="sidebar-list-1 border">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fas fa-laugh"></i> My Memes</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-list-2">
+                    <ul>
+                        <li><a href="#">Change Password</a></li>
+                        <li><a href="#">Log Out</a></li>
+                    </ul>
+                </div>
+
+                <!-- dark mode -->
+                <div class="dark-mode">
+                    <p>Dark Theme</p>
+                    <div class="toggle">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+                <!-- end of dark mode -->
+            </div>
+        </div>
+        <!--end of sidebar -->
+
+    </section>
+    <!-- end of feeds page -->
+    
+</body>
+<script src="/static/gossets/js/script.js"></script>   
+
+</html>
