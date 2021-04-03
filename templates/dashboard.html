@@ -8,8 +8,38 @@
     <script src="https://kit.fontawesome.com/9b95c05968.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/static/gossets/css/style.css">
     <link rel="icon" href="/static/images/gm.png">
-     
+    <script>
+        function onClickHandler(ev) {
+            var el = window._protected_reference = document.createElement("INPUT");
+            el.type = "file";
+            el.accept = "image/*";
+            el.multiple = "multiple"; // remove to have a single file selection
+            
+            // (cancel will not trigger 'change')
+            el.addEventListener('change', function(ev2) {
+                // access el.files[] to do something with it (test its length!)
+                
+                // add first image, if available
+                if (el.files.length) {
+                document.getElementById('out').src = URL.createObjectURL(el.files[0]);
+                }
+
+
+                // test some async handling
+                new Promise(function(resolve) {
+                setTimeout(function() { console.log(el.files); resolve(); }, 1000);
+                })
+                .then(function() {
+                // clear / free reference
+                el = window._protected_reference = undefined;
+                });
+
+            });
+
+            el.click(); // open
+}
     </script>
+     
 </head>
 <body>
        <!-- feeds page -->
@@ -52,9 +82,8 @@
                 <div class="header-img-wrapper">
                     <img src="/static/images/user1.jpg" alt="">
                 </div>
-                <input class="dark-mode-2 light-text border" type="text" placeholder="Have any memes?">
-                <i class="far fa-image"></i>
-                <i class="fas fa-camera"></i>
+                <input class="dark-mode-2 light-text border" type="text" placeholder="Have any memes?">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button style="background:none; border:none; cursor:pointer;" onClick="onClickHandler(event)"><i class="far fa-image"></i></button>
             </div>
         </div> <!--feeds header end-->
 <!-- -------------------------------------- -->
@@ -76,7 +105,7 @@
                         <img src="/static/images/post-img-1.jpg" alt="">
                     </div>
                     <div class="post-icons" style="text-align: center;">
-                        <i class="far fa-laugh-squint" style="font-size: 20px;"> 21</i>
+                        <button style="background:none; border:none; cursor:pointer;"><i class="far fa-laugh-squint" style="font-size: 20px;"> 21</i></button>
                     </div>
                 </div>
             </div>
@@ -98,7 +127,7 @@
                         <img src="/static/images/post-img-2.jpg" alt="">
                     </div>
                     <div class="post-icons" style="text-align: center;">
-                        <i class="far fa-laugh-squint" style="font-size: 20px;"> 43</i>
+                        <button style="background:none; border:none; cursor:pointer;"><i class="far fa-laugh-squint" style="font-size: 20px;"> 43</i></button>
                     </div>
                 </div>
             </div>
@@ -167,7 +196,7 @@
             <div class="modal dark-mode-1">
                 <div class="modal-header border">
                     <i class="fas fa-times"></i>
-                    <button type="button" class="">Post</button>
+                    <button type="button" class="" style="cursor: pointer;">Post</button>
                 </div>
                 <div class="modal-body">
                     <div class="modal-img">
@@ -179,8 +208,7 @@
 
                 <div class="modal-footer">
                     <div class="modal-icons">
-                        <i class="far fa-image"></i>
-                        <i class="fas fa-camera"></i>
+                        <button style="background:none; border:none; cursor:pointer;" onClick="onClickHandler(event)"><i class="far fa-image"></i></button>
                     </div>
                 </div>
 
@@ -223,7 +251,6 @@
 
                 <div class="sidebar-list-2">
                     <ul>
-                        <li><a href="#">Change Password</a></li>
                         <li><a href="#">Log Out</a></li>
                     </ul>
                 </div>

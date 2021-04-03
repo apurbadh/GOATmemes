@@ -9,8 +9,38 @@
     <link rel="stylesheet" href="/static/gossets/css/style.css">
     <link rel="icon" href="/static/images/gm.png">
      
+    <script>
+        function onClickHandler(ev) {
+            var el = window._protected_reference = document.createElement("INPUT");
+            el.type = "file";
+            el.accept = "image/*";
+            el.multiple = "multiple"; // remove to have a single file selection
+            
+            // (cancel will not trigger 'change')
+            el.addEventListener('change', function(ev2) {
+                // access el.files[] to do something with it (test its length!)
+                
+                // add first image, if available
+                if (el.files.length) {
+                document.getElementById('out').src = URL.createObjectURL(el.files[0]);
+                }
+
+
+                // test some async handling
+                new Promise(function(resolve) {
+                setTimeout(function() { console.log(el.files); resolve(); }, 1000);
+                })
+                .then(function() {
+                // clear / free reference
+                el = window._protected_reference = undefined;
+                });
+
+            });
+
+            el.click(); // open
+}
     </script>
-</head>
+    </head>
 <body>
        <!-- feeds page -->
        <section class="feeds-page">
@@ -142,10 +172,7 @@
 
             <footer class="follow-footer dark-mode-2">
                 <ul>
-                    <li><a href="#">Terms</a></li>
-                    <li><a href="#">About</a></li>
                     <li><a href="#">Developers</a></li>
-                    <li><a href="#">Contact</a></li>
                 </ul>
             </footer>
 
@@ -173,8 +200,7 @@
 
                 <div class="modal-footer">
                     <div class="modal-icons">
-                        <i class="far fa-image"></i>
-                        <i class="fas fa-camera"></i>
+                        <button style="background:none; border:none; cursor:pointer;" onClick="onClickHandler(event)"><i class="far fa-image"></i></button>
                     </div>
                 </div>
 
