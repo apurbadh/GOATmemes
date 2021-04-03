@@ -53,13 +53,23 @@
         <div class="login">
             <div class="login-content" style="margin-bottom: -12%;">  <!--wrapper of heading and form-->
                 <h2>GOAT Registration</h2>
-                <form class="login-form" id="register" method="POST">
-                    <label>Name :</label><input type="text" placeholder="Your Name" class="login-useer-info" required>
-                    <label>Email :</label><input type="text" placeholder="Your Email" class="login-useer-info" required>
-                    <label>Password :</label><input type="password" placeholder="Choose Password" class="login-useer-info" required id="password">
+                <form class="login-form" id="register" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    <input type="hidden" name="csrfmiddlewaretoken" value="pHK2CZzBB323BM2Nq7DE2sxnQoBG1jPl" disabled="">
+                    {% csrf_token %}
+                    <h3 style="color: #ff0000">{{ mes }}</h3>
+                    <label>Name :</label><input type="text" placeholder="Your Name" class="login-useer-info" required name="name">
+                   {% csrf_token %}
+                    <label>Email :</label><input type="text" placeholder="Your Email" class="login-useer-info" required name="email">
+                    <label>Password :</label>
+                    {% csrf_token %}
+                    <input type="password" placeholder="Choose Password" class="login-useer-info" required id="password" name="password">
+                    {% csrf_token %}
                     <input type="password" placeholder="Repeat Passowrd" class="login-password" required id="cpassword">
-                    <label>Date of Birth :</label><input type="date" placeholder="Your Name" class="login-useer-info" required>
-                    <label>Address :</label><input type="text" placeholder="City" class="login-useer-info" required>
+                    {% csrf_token %}
+                    <label>Date of Birth :</label><input type="date" placeholder="Your Name" class="login-useer-info" required name="date">
+                    {% csrf_token %}
+                    <label>Address :</label><input type="text" placeholder="City" class="login-useer-info" required name="address">
+                   {% csrf_token %}
                     <select class="login-useer-info" name="country">
                         <option value="- SELECT COUNTRY -">- SELECT COUNTRY -</option>
                         <option value="Afganistan">Afghanistan</option>
@@ -309,9 +319,10 @@
                         <option value="Zambia">Zambia</option>
                         <option value="Zimbabwe">Zimbabwe</option>
                      </select>
-
+                    {% csrf_token %}
                     <label>Profile Image :</label><input type="file" name="img" accept="image/*">
                     <div>
+                        {% csrf_token %}
                         <input type="checkbox" class="login-form-checkbox" id="check" required>
                         <label for="check">&nbsp;I agree with all Terms and Conditions</label> <!--for should be id of other element to link--><br><br>
                         <button type="button" class="login-form-btn" onclick="register()">Continue</button>

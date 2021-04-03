@@ -8,6 +8,12 @@
     <script src="https://kit.fontawesome.com/9b95c05968.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/static/gossets/css/style.css">
     <link rel="icon" href="/static/images/gm.png">
+    <script>
+        function submitf(){
+            let form = document.getElementById("formm")
+            form.submit();
+        }
+    </script>
 </head>
 <body>
     <!-- login page -->
@@ -26,11 +32,14 @@
         <div class="login">
             <div class="login-content">  <!--wrapper of heading and form-->
                 <h2>GOAT Login</h2>
-                <form class="login-form">
-                    <input type="text" placeholder="Email" class="login-useer-info" required>
-                    <input type="password" placeholder="Passowrd" class="login-password" required>
+                <form class="login-form" action="" method="post" id="formm" enctype="multipart/form-data">
+                    {% csrf_token %}
+                     <input type="hidden" name="csrfmiddlewaretoken" value="pHK2CZzBB323BM2Nq7DE2sxnQoBG1jPl" disabled="">
+                     <h3 style="color: #ff0000">{{ mes }}</h3>
+                    <input type="text" placeholder="Email" class="login-useer-info" required name="email">
+                    <input type="password" placeholder="Password" class="login-password" required name="password">
                     <div>
-                        <button type="button" class="login-form-btn">Log In</button>
+                        <button type="button" class="login-form-btn" onclick="submitf()">Log In</button>
                         <input type="checkbox" class="login-form-checkbox" id="check">
                         <label for="check">&nbsp;Remember me</label> <!--for should be id of other element to link--><br><br>
                         <a href="forgot">Forgot Password?</a>
