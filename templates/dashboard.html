@@ -32,9 +32,9 @@
             
             <div class="user">
                 <div class="user-img-wrapper">
-                    <img src="/static/images/user1.jpg" alt="user1">
+                    <img src="/media/{{ user.pic }}" alt="user1">
                 </div>
-                <a href="#" class="user-link light-text">Name USER</a>
+                <a href="#" class="user-link light-text">{{ user.name }}</a>
                 <i class="fas fa-chevron-down"></i>
             </div>
         </nav>
@@ -50,7 +50,7 @@
             </div>
             <div class="header-post dark-mode-1 border">
                 <div class="header-img-wrapper">
-                    <img src="/static/images/user1.jpg" alt="">
+                    <img src="/media/{{ user.pic }}" alt="">
                 </div>
                 <input class="dark-mode-2 light-text border" type="text" placeholder="Have any memes?">
                 <i class="far fa-image"></i>
@@ -66,7 +66,6 @@
                 <div class="post-content">
                     <div class="post-user-info light-text"><!-- 4 parts fullname,icon,span username,time -->
                     <h4>Kale Kumar</h4>
-                    <span>@kalekumar123</span>
                     </div>
                     <!-- text content -->
                     <p class="post-text light-text">
@@ -88,7 +87,6 @@
                 <div class="post-content">
                     <div class="post-user-info light-text"><!-- 4 parts fullname,icon,span username,time -->
                     <h4>Khaire Yadav</h4>
-                    <span>@khaireyadav</span>
                     </div>
                     <!-- text content -->
                     <p class="post-text light-text">
@@ -116,7 +114,6 @@
                 </div>
                 <div class="follow-user-info light-text">
                     <h4>Kale Kumar</h4>
-                    <p>@kalekumar123</p>
                 </div>
                 <button type="button" class="follow-btn dark-mode-2">Memes</button>
             </div>
@@ -124,11 +121,10 @@
             <!-- user 2 -->
             <div class="follow-user border">
                 <div class="follow-user-img">
-                    <img src="/static/images/user6.jpg" alt="">
+                    <img src="/media/{{ user.pic }}" alt="">
                 </div>
                 <div class="follow-user-info light-text">
                     <h4>HeHe Ram</h4>
-                    <p>@heheram123</p>
                 </div>
                 <button type="button" class="follow-btn dark-mode-2">Memes</button>
             </div>
@@ -171,7 +167,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="modal-img">
-                        <img src="/static/images/user1.jpg" width="40" alt="">
+                        <img src="/media/{{ user.pic }}" width="40" alt="">
                     </div>
                     <input type="text" placeholder="Have any memes?" class="modal-input dark-mode-2 light-text border">
                     
@@ -198,12 +194,11 @@
                 </div> 
                 <div class="sidebar-user">
                     <div class="sidebar-user-img">
-                        <img src="/static/images/user1.jpg"  alt="">
+                        <img src="/media/{{ user.pic }}"  alt="">
                     </div>
                 </div>
                 <div class="sidebar-user-info light-text">
-                    <h4>Name USER</h4>
-                    <p>@username</p>
+                    <h4>{{ user.name }}</h4>
                 </div>
 
                 <div class="following light-text">
