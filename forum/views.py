@@ -5,6 +5,8 @@ from django.shortcuts import redirect
 
 # Create your views here.
 def index(request):
+    if request.session.get("logged"):
+        return redirect('dashboard')
     return render(request, "index.html")
 
 
@@ -22,6 +24,8 @@ def contact(request):
 
 
 def signup(request):
+    if request.session.get("logged"):
+        return redirect('dashboard')
     content = {'mes' : ""}
     if request.method == "POST":
         name = request.POST.get("name")
@@ -42,6 +46,8 @@ def signup(request):
 
 
 def login(request):
+    if request.session.get("logged"):
+        return redirect('dashboard')
     content = {"mes" : ""}
     if request.method == "POST":
         email = request.POST.get("email")
