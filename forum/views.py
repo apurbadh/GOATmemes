@@ -1,21 +1,23 @@
 from django.shortcuts import render
-from .models import Users
+from .models import Users, Memes
 from django.shortcuts import redirect
 
 
 # Create your views here.
 def index(request):
     if request.session.get("logged"):
-        return redirect('dashboard')
+        return redirect('/dashboard')
     return render(request, "index.html")
 
 
 def dashboard(request):
     if not request.session.get("logged"):
         return redirect("/")
+    users = Users.objects.all()[:3]
     email = request.session.get("email")
     user = Users.objects.filter(email=email).first()
-    content = {"user": user}
+    meme = Memes.objects.all()
+    content = {"user": user, "memes": meme, "top": users}
     return render(request, "dashboard.html", content)
 
 
@@ -25,7 +27,7 @@ def contact(request):
 
 def signup(request):
     if request.session.get("logged"):
-        return redirect('dashboard')
+        return redirect('/dashboard')
     content = {'mes' : ""}
     if request.method == "POST":
         name = request.POST.get("name")
@@ -47,7 +49,7 @@ def signup(request):
 
 def login(request):
     if request.session.get("logged"):
-        return redirect('dashboard')
+        return redirect('/dashboard')
     content = {"mes" : ""}
     if request.method == "POST":
         email = request.POST.get("email")
@@ -60,20 +62,32 @@ def login(request):
         else:
             request.session["logged"] = True
             request.session["email"] = email
-            return redirect("/dashboard")
+            return redirect("//dashboard")
     return render(request, "login.html", content)
 
 
 def mymemes(request):
-    return render(request, "mymemes.html")
+    if not request.session.get("logged"):
+        return redirect("/")
+    email = request.session.get("email")
+    user = Users.objects.filter(email=email).first()
+    users = Users.objects.all()[:3]
+    meme = Memes.objects.filter(posted_by_email=email)
+    content = {"user": user, "memes": meme, "top": users}
+    return render(request, "mymemes.html", content)
 
 
 def forgot(request):
     return render(request, "forgot.html")
 
 
-def notifications(request):
-    return render(request, "notifications.html")
+# def notifications(request):
+#     if not request.session.get("logged"):
+#         return redirect("/")
+#     email = request.session.get("email")
+#     user = Users.objects.filter(email=email).first()
+#     content = {"user": user}
+#     return render(request, "notifications.html", content)
 
 
 def developers(request):
@@ -81,4 +95,27 @@ def developers(request):
 
 
 def search(request):
-    return render(request, "search.html")
+    if not request.session.get("logged"):
+        return redirect("/")
+    query = request.GET["query"]
+    email = request.session.get("email")
+    memes = Memes.objects.filter(caption__contains=query)
+    user = Users.objects.filter(email=email).first()
+    users = Users.objects.all()[:3]
+    content = {"user": user, "memes": memes, "query": query, "top": users}
+    return render(request, "search.html", content)
+
+
+def post(request):
+    if request.method == "POST":
+        caption = request.POST.get("caption")
+        image = request.FILES.get("img")
+        user = Users.objects.filter(email=request.session.get("email")).first()
+        meme = Memes(posted_by=user.name, posted_by_email=user.email, caption=caption, likes=0, usr_img=user.pic, meme=image)
+        meme.save()
+    return redirect("/")
+
+
+def logout(request):
+    request.session["logged"] = False
+    return redirect("/")

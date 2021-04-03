@@ -7,9 +7,10 @@ urlpatterns = [
     path('signup', signup),
     path('mymemes', mymemes),
     path('forgot', forgot),
-    path('notifications', notifications),
+    # path('notifications', notifications),
     path('developers', developers),
     path('contact', contact),
     path('search', search),
-
+    path('post', post),
+    path("logout", logout)
 ]

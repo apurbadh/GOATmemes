@@ -8,37 +8,6 @@
     <script src="https://kit.fontawesome.com/9b95c05968.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/static/gossets/css/style.css">
     <link rel="icon" href="/static/images/gm.png">
-    <script>
-        function onClickHandler(ev) {
-            var el = window._protected_reference = document.createElement("INPUT");
-            el.type = "file";
-            el.accept = "image/*";
-            el.multiple = "multiple"; // remove to have a single file selection
-            
-            // (cancel will not trigger 'change')
-            el.addEventListener('change', function(ev2) {
-                // access el.files[] to do something with it (test its length!)
-                
-                // add first image, if available
-                if (el.files.length) {
-                document.getElementById('out').src = URL.createObjectURL(el.files[0]);
-                }
-
-
-                // test some async handling
-                new Promise(function(resolve) {
-                setTimeout(function() { console.log(el.files); resolve(); }, 1000);
-                })
-                .then(function() {
-                // clear / free reference
-                el = window._protected_reference = undefined;
-                });
-
-            });
-
-            el.click(); // open
-}
-    </script>
      
 </head>
 <body>
@@ -48,7 +17,7 @@
         <nav class="feeds-nav dark-mode-1">
             <div class="icons">
                 <a href="#" class="active"><i class="fas fa-home"></i></a>
-                <a href="notifications"><i class="fas fa-bell"></i></a>
+{#                <a href="notifications"><i class="fas fa-bell"></i></a>#}
 
 
 
@@ -57,9 +26,12 @@
 
             <div class="search-bar">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Search" class="search-bar-input dark-mode-2 light-text border">
+                <form action="search">
+                <input type="text" placeholder="Search" class="search-bar-input dark-mode-2 light-text border" name="query">
+                            </form>
+
             </div>
-            
+
             <div class="user">
                 <div class="user-img-wrapper">
                     <img src="/media/{{ user.pic }}" alt="user1">
@@ -78,97 +50,49 @@
             <div class="header-top light-text border">
                 <h4>Dashboard</h4>
             </div>
-            <div class="header-post dark-mode-1 border">
-                <div class="header-img-wrapper">
-                    <img src="/media/{{ user.pic }}" alt="">
-                </div>
-                <input class="dark-mode-2 light-text border" type="text" placeholder="Have any memes?">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button style="background:none; border:none; cursor:pointer;" onClick="onClickHandler(event)"><i class="far fa-image"></i></button>
-            </div>
+
         </div> <!--feeds header end-->
 <!-- -------------------------------------- -->
+{% for meme in memes %}
         <div class="posts dark-mode-1"><!-- possts -->
             <div class="post border">
                 <div class="user-avatar"> <!--img wrapper-->
-                    <img src="/static/images/user2.jpg">
+                    <img src="/media/{{ meme.usr_img }}">
                 </div>
                 <div class="post-content">
                     <div class="post-user-info light-text"><!-- 4 parts fullname,icon,span username,time -->
-                    <h4>Kale Kumar</h4>
+                    <h4>{{ meme.posted_by }}</h4>
                     </div>
                     <!-- text content -->
                     <p class="post-text light-text">
-                        Funni caption here... bruh blahahahahahaha
+                        {{ meme.caption }}
                     </p>
                     <div class="post-img">
-                        <img src="/static/images/post-img-1.jpg" alt="">
+                        <img src="/media/{{ meme.meme }}" alt="">
                     </div>
-                    <div class="post-icons" style="text-align: center;">
-                        <button style="background:none; border:none; cursor:pointer;"><i class="far fa-laugh-squint" style="font-size: 20px;"> 21</i></button>
-                    </div>
+{#                    <div class="post-icons" style="text-align: center;">#}
+{#                        <i class="far fa-laugh-squint" style="font-size: 20px;"> {{ meme.likes}}</i>#}
+{#                    </div>#}
                 </div>
             </div>
-            <!-- post 2 -->
-            <div class="post border">
-                <div class="user-avatar"> <!--img wrapper-->
-                    <img src="/static/images/user3.jpg">
-                </div>
-                <div class="post-content">
-                    <div class="post-user-info light-text"><!-- 4 parts fullname,icon,span username,time -->
-                    <h4>Khaire Yadav</h4>
-                    </div>
-                    <!-- text content -->
-                    <p class="post-text light-text">
-                        You want a meme .zehahahahahahah
-                    </p>
-                    <div class="post-img">
-                        <img src="/static/images/post-img-2.jpg" alt="">
-                    </div>
-                    <div class="post-icons" style="text-align: center;">
-                        <button style="background:none; border:none; cursor:pointer;"><i class="far fa-laugh-squint" style="font-size: 20px;"> 43</i></button>
-                    </div>
-                </div>
-            </div>
-            <!-- post 3 -->
-            <!-- post section end -->
-            
-        </div>
+{% endfor %}
 
-        <div class="follow dark-mode-1"><!-- who to follow section -->
-            <!-- parts: heading,3users,show more,footer -->
-            <h3 class="follow-heading light-text border">TOP MEME POSTERS</h3>
-            <div class="follow-user border">
-                <div class="follow-user-img">
-                    <img src="/static/images/user3.jpg" alt="">
-                </div>
-                <div class="follow-user-info light-text">
-                    <h4>Kale Kumar</h4>
-                </div>
-                <button type="button" class="follow-btn dark-mode-2">Memes</button>
-            </div>
-
-            <!-- user 2 -->
-            <div class="follow-user border">
-                <div class="follow-user-img">
-                    <img src="/media/{{ user.pic }}" alt="">
-                </div>
-                <div class="follow-user-info light-text">
-                    <h4>HeHe Ram</h4>
-                </div>
-                <button type="button" class="follow-btn dark-mode-2">Memes</button>
-            </div>
-            <!-- user 3 -->
-
-            <div class="follow-user border">
-                <div class="follow-user-img">
-                    <img src="/static/images/user5.jpg" alt="">
-                </div>
-                <div class="follow-user-info light-text">
-                    <h4>Don Dai</h4>
-                    <p>@daiisdon</p>
-                </div>
-                <button type="button" class="follow-btn dark-mode-2">Memes</button>
-            </div><!-- user finished here -->
+{#        <div class="follow dark-mode-1"><!-- who to follow section -->#}
+{#            <!-- parts: heading,3users,show more,footer -->#}
+{#            <h3 class="follow-heading light-text border">TOP MEME POSTERS</h3>#}
+{#            {% for t in top %}#}
+{#            <div class="follow-user border">#}
+{#                <div class="follow-user-img">#}
+{#                    <img src="/static/images/user3.jpg" alt="">#}
+{#                </div>#}
+{#                <div class="follow-user-info light-text">#}
+{#                    <h4</h4>#}
+{#                </div>#}
+{#                <button type="button" class="follow-btn dark-mode-2">Memes</button>#}
+{#            </div>#}
+{#            {% endfor %}#}
+{#            <!-- user 2 -->#}
+{#             user finished here -->#}
 
 
 
@@ -187,30 +111,36 @@
             <i class="fas fa-laugh"></i>Post  <!--this button ends up behind the navigation button so set css position as fixed and defile bottom and left-->
         </button>
 
-        <!-- post modal -->
+ <!-- post modal -->
+           <form method="post" action="/post" id="myform" enctype="multipart/form-data">
+               <input type="hidden" name="csrfmiddlewaretoken" value="pHK2CZzBB323BM2Nq7DE2sxnQoBG1jPl" disabled="">
+                {% csrf_token %}
         <div class="modal-wrapper">
             <div class="modal dark-mode-1">
                 <div class="modal-header border">
                     <i class="fas fa-times"></i>
-                    <button type="button" class="" style="cursor: pointer;">Post</button>
+                    <button type="button" class="" type="submit" onclick="submitf()">Post</button>
                 </div>
                 <div class="modal-body">
                     <div class="modal-img">
                         <img src="/media/{{ user.pic }}" width="40" alt="">
                     </div>
-                    <input type="text" placeholder="Have any memes?" class="modal-input dark-mode-2 light-text border">
-                    
+                    <input type="text" placeholder="Have any memes?" class="modal-input dark-mode-2 light-text border" name="caption" required>
+
                 </div>
 
                 <div class="modal-footer">
                     <div class="modal-icons">
-                        <button style="background:none; border:none; cursor:pointer;" onClick="onClickHandler(event)"><i class="far fa-image"></i></button>
+                        <label for="img">  <i class="far fa-image"> </i></label>
+                        <input type="file" name="img" style="display:none" id="img" required>
                     </div>
                 </div>
 
             </div>
         </div>
+               </form>
         <!-- end of post modal -->
+
 
 
         <!-- sidebar -->
@@ -231,7 +161,7 @@
 
                 <div class="following light-text">
                     <p class="following-paragraph">
-                        <span>18</span><br> Memes Shared
+                        <span>{{ user.number_of_memes }}</span><br> Memes Shared
                     </p>
                 </div>
                 <br><br>
@@ -246,7 +176,7 @@
 
                 <div class="sidebar-list-2">
                     <ul>
-                        <li><a href="#">Log Out</a></li>
+                        <li><a href="/logout">Log Out</a></li>
                     </ul>
                 </div>
 

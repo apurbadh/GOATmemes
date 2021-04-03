@@ -3,64 +3,40 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>GOATmemes - My memes</title>
+    <title>GOATmemes - My Memes</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src="https://kit.fontawesome.com/9b95c05968.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/static/gossets/css/style.css">
     <link rel="icon" href="/static/images/gm.png">
-     
-    <script>
-        function onClickHandler(ev) {
-            var el = window._protected_reference = document.createElement("INPUT");
-            el.type = "file";
-            el.accept = "image/*";
-            el.multiple = "multiple"; // remove to have a single file selection
-            
-            // (cancel will not trigger 'change')
-            el.addEventListener('change', function(ev2) {
-                // access el.files[] to do something with it (test its length!)
-                
-                // add first image, if available
-                if (el.files.length) {
-                document.getElementById('out').src = URL.createObjectURL(el.files[0]);
-                }
 
-
-                // test some async handling
-                new Promise(function(resolve) {
-                setTimeout(function() { console.log(el.files); resolve(); }, 1000);
-                })
-                .then(function() {
-                // clear / free reference
-                el = window._protected_reference = undefined;
-                });
-
-            });
-
-            el.click(); // open
-}
-    </script>
-    </head>
+</head>
 <body>
        <!-- feeds page -->
        <section class="feeds-page">
         <!-- feeds-nav -->
         <nav class="feeds-nav dark-mode-1">
             <div class="icons">
-                <a href="dashboard" class="active"><i class="fas fa-home"></i></a>
-                <a href="notifications"><i class="far fa-bell"></i></a>
+                <a href="/"><i class="fas fa-home"></i></a>
+{#                <a href="notifications"><i class="fas fa-bell"></i></a>#}
+
+
+
+
             </div>
 
             <div class="search-bar">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="Search" class="search-bar-input dark-mode-2 light-text border">
+                <form action="search">
+                <input type="text" placeholder="Search" class="search-bar-input dark-mode-2 light-text border" name="query">
+                            </form>
+
             </div>
-            
+
             <div class="user">
                 <div class="user-img-wrapper">
-                    <img src="/static/images/user1.jpg" alt="user1">
+                    <img src="/media/{{ user.pic }}" alt="user1">
                 </div>
-                <a href="#" class="user-link light-text">Name USER</a>
+                <a href="#" class="user-link light-text">{{ user.name }}</a>
                 <i class="fas fa-chevron-down"></i>
             </div>
         </nav>
@@ -77,99 +53,50 @@
 
         </div> <!--feeds header end-->
 <!-- -------------------------------------- -->
+{% for meme in memes %}
         <div class="posts dark-mode-1"><!-- possts -->
             <div class="post border">
                 <div class="user-avatar"> <!--img wrapper-->
-                    <img src="/static/images/user1.jpg">
+                    <img src="/media/{{ meme.usr_img }}">
                 </div>
                 <div class="post-content">
                     <div class="post-user-info light-text"><!-- 4 parts fullname,icon,span username,time -->
-                    <h4>Name USER</h4>
-                    <span>@username</span>
+                    <h4>{{ meme.posted_by }}</h4>
                     </div>
                     <!-- text content -->
                     <p class="post-text light-text">
-                        meme here
+                        {{ meme.caption }}
                     </p>
                     <div class="post-img">
-                        <img src="/static/images/post-img-1.jpg" alt="">
+                        <img src="/media/{{ meme.meme }}" alt="">
                     </div>
                     <div class="post-icons" style="text-align: center;">
-                        <button style="background:none; border:none; cursor:pointer;"><i class="far fa-laugh-squint" style="font-size: 20px;"> 21</i></button>
+{#                        <i class="far fa-laugh-squint" style="font-size: 20px;"> {{ meme.likes}}</i>#}
                     </div>
                 </div>
             </div>
-            <!-- post 2 -->
-            <div class="post border">
-                <div class="user-avatar"> <!--img wrapper-->
-                    <img src="/static/images/user1.jpg">
-                </div>
-                <div class="post-content">
-                    <div class="post-user-info light-text"><!-- 4 parts fullname,icon,span username,time -->
-                    <h4>Name USER</h4>
-                    <span>@username</span>
-                    </div>
-                    <!-- text content -->
-                    <p class="post-text light-text">
-                        boom meme
-                    </p>
-                    <div class="post-img">
-                        <img src="/static/images/post-img-2.jpg" alt="">
-                    </div>
-                    <div class="post-icons" style="text-align: center;">
-                        <button style="background:none; border:none; cursor:pointer;"><i class="far fa-laugh-squint" style="font-size: 20px;"> 31</i></button>
-                    </div>
-                </div>
-            </div>
-           
-            
-            
-            
-        </div>
+{% endfor %}
 
-        <div class="follow dark-mode-1"><!-- who to follow section -->
-            <!-- parts: heading,3users,show more,footer -->
-            <h3 class="follow-heading light-text border">TOP MEME POSTERS</h3>
-            <div class="follow-user border">
-                <div class="follow-user-img">
-                    <img src="/static/images/user3.jpg" alt="">
-                </div>
-                <div class="follow-user-info light-text">
-                    <h4>Kale Kumar</h4>
-                    <p>@kalekumar123</p>
-                </div>
-                <button type="button" class="follow-btn dark-mode-2">Memes</button>
-            </div>
-
-            <!-- user 2 -->
-            <div class="follow-user border">
-                <div class="follow-user-img">
-                    <img src="/static/images/user6.jpg" alt="">
-                </div>
-                <div class="follow-user-info light-text">
-                    <h4>HeHe Ram</h4>
-                    <p>@heheram123</p>
-                </div>
-                <button type="button" class="follow-btn dark-mode-2">Memes</button>
-            </div>
-            <!-- user 3 -->
-
-            <div class="follow-user border">
-                <div class="follow-user-img">
-                    <img src="/static/images/user5.jpg" alt="">
-                </div>
-                <div class="follow-user-info light-text">
-                    <h4>Don Dai</h4>
-                    <p>@daiisdon</p>
-                </div>
-                <button type="button" class="follow-btn dark-mode-2">Memes</button>
-            </div><!-- user finished here -->
-
+{#        <div class="follow dark-mode-1"><!-- who to follow section -->#}
+{#            <!-- parts: heading,3users,show more,footer -->#}
+{#            <h3 class="follow-heading light-text border">TOP MEME POSTERS</h3>#}
+{#            <div class="follow-user border">#}
+{#                <div class="follow-user-img">#}
+{#                    <img src="/static/images/user3.jpg" alt="">#}
+{#                </div>#}
+{#                <div class="follow-user-info light-text">#}
+{#                    <h4>Kale Kumar</h4>#}
+{#                </div>#}
+{#                <button type="button" class="follow-btn dark-mode-2">Memes</button>#}
+{#            </div>#}
+{#            #}
 
 
             <footer class="follow-footer dark-mode-2">
                 <ul>
-                    <li><a href="#">Developers</a></li>
+                    <li><a href="#"> &copy; GOATmemes 2021</a></li>
+                    <li><a href="#">|</a></li>
+                    <li><a href="developers">Developers</a></li>
                 </ul>
             </footer>
 
@@ -180,30 +107,37 @@
             <i class="fas fa-laugh"></i>Post  <!--this button ends up behind the navigation button so set css position as fixed and defile bottom and left-->
         </button>
 
-        <!-- post modal -->
+ <!-- post modal -->
+           <form method="post" action="/post" id="myform" enctype="multipart/form-data">
+               <input type="hidden" name="csrfmiddlewaretoken" value="pHK2CZzBB323BM2Nq7DE2sxnQoBG1jPl" disabled="">
+                {% csrf_token %}
         <div class="modal-wrapper">
             <div class="modal dark-mode-1">
                 <div class="modal-header border">
                     <i class="fas fa-times"></i>
-                    <button type="button" class="">Post</button>
+                    <button type="button" class="" type="submit" onclick="submitf()">Post</button>
                 </div>
                 <div class="modal-body">
                     <div class="modal-img">
-                        <img src="/static/images/user1.jpg" width="40" alt="">
+                        <img src="/media/{{ user.pic }}" width="40" alt="">
                     </div>
-                    <input type="text" placeholder="Have any memes?" class="modal-input dark-mode-2 light-text border">
-                    
+                    <input type="text" placeholder="Have any memes?" class="modal-input dark-mode-2 light-text border" name="caption" required>
+
                 </div>
 
                 <div class="modal-footer">
                     <div class="modal-icons">
-                        <button style="background:none; border:none; cursor:pointer;" onClick="onClickHandler(event)"><i class="far fa-image"></i></button>
+                        <label for="img">  <i class="far fa-image"> </i></label>
+                        <input type="file" name="img" style="display:none" id="img" required>
                     </div>
                 </div>
 
             </div>
         </div>
+               </form>
         <!-- end of post modal -->
+
+
 
         <!-- sidebar -->
         <div class="sidebar-wrapper">
@@ -211,23 +145,19 @@
                 <div class="sidebar-header border">
                     <h2 class="light-text">GOAT Info</h2>
                     <i class="fas fa-times"></i>
-                </div> 
+                </div>
                 <div class="sidebar-user">
                     <div class="sidebar-user-img">
-                        <img src="/static/images/user1.jpg"  alt="">
+                        <img src="/media/{{ user.pic }}"  alt="">
                     </div>
                 </div>
                 <div class="sidebar-user-info light-text">
-                    <h4>Name USER</h4>
-                    <p>@username</p>
+                    <h4>{{ user.name }}</h4>
                 </div>
 
                 <div class="following light-text">
                     <p class="following-paragraph">
-                        <span>18</span><br> Memes Shared
-                    </p>
-                    <p class="following-paragraph">
-                        <span>10</span><br> Active Days
+                        <span>{{ user.number_of_memes }}</span><br> Memes Shared
                     </p>
                 </div>
                 <br><br>
@@ -235,15 +165,14 @@
                 <div class="sidebar-list-1 border">
                     <ul>
                         <li>
-                            <a href="#"><i class="fas fa-laugh"></i> My Memes</a>
+                            <a href="mymemes"><i class="fas fa-laugh"></i> My Memes</a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="sidebar-list-2">
                     <ul>
-                        <li><a href="#">Change Password</a></li>
-                        <li><a href="#">Log Out</a></li>
+                        <li><a href="/logout">Log Out</a></li>
                     </ul>
                 </div>
 
