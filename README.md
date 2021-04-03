@@ -31,7 +31,7 @@ HTML5, CSS3, JavaScript, Django, SQLite.
 StackOverflow, GitHub, Medium Article
 
 
-##How to run the project?
+## How to run the project?
 1. Clone the files : git clone https://github.com/apurbadh/GOATmemes.git
 2. Go to the directory : cd GOATmemes
 3. Install Requirements : pip install -r requirements.txt
