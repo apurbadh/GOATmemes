@@ -111,6 +111,8 @@ def post(request):
         caption = request.POST.get("caption")
         image = request.FILES.get("img")
         user = Users.objects.filter(email=request.session.get("email")).first()
+        user.number_of_memes += 1
+        user.save()
         meme = Memes(posted_by=user.name, posted_by_email=user.email, caption=caption, likes=0, usr_img=user.pic, meme=image)
         meme.save()
     return redirect("/")
