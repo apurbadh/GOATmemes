@@ -62,7 +62,7 @@ def login(request):
         else:
             request.session["logged"] = True
             request.session["email"] = email
-            return redirect("//dashboard")
+            return redirect("/dashboard")
     return render(request, "login.html", content)
 
 
