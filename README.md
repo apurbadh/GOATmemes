@@ -32,8 +32,23 @@ StackOverflow, GitHub, Medium Article
 
 
 ## How to run the project?
-1. Clone the files : git clone https://github.com/apurbadh/GOATmemes.git
-2. Go to the directory : cd GOATmemes
-3. Install Requirements : pip install -r requirements.txt
-3. Activate Virtual Environment : source venv/bin/activate
-4. Run the Project : python3 manage.py runserver
+##### Clone the files
+```
+git clone https://github.com/apurbadh/GOATmemes.git
+```
+##### Go to the directory 
+```
+cd GOATmemes
+```
+##### Install Requirements
+```
+pip install -r requirements.txt
+```
+##### Activate Virtual Environment 
+```
+source venv/bin/activate
+```
+##### Run the Project 
+```
+python3 manage.py runserver
+```
